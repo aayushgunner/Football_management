@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,8 +17,8 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <h1>JSON Data Table</h1>
+    <div className="background_lol">
+      <h1>Player Information</h1>
       <table>
         <thead>
           <tr>
