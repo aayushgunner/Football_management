@@ -142,7 +142,7 @@ func retrieveRecord(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	// Execute the SELECT query
-	rows, err := db.Query("SELECT first_name, last_name FROM players")
+	rows, err := db.Query("SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
