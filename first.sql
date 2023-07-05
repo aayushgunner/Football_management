@@ -71,5 +71,7 @@ INSERT into players(first_name,last_name,position,team_id) VALUES ('Gabriel', 'J
 INSERT into players(first_name,last_name,position,team_id) VALUES ('Granit', 'Xhaka', 'Centre Midfield',1 );
 INSERT into players(first_name,last_name,position,team_id) VALUES ('Ben', 'White' , 'Right Back',1 );
 
+SELECT first_name , last_name FROM players;
+
 
 SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;
