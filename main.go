@@ -1,15 +1,26 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+ "log"
+ "os"
+ "github.com/joho/godotenv"
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		
-		c.JSON(200, gin.H{
-			"message": "Hello",
-		})
-	})
-	r.Run() // listen and serve on 0.0.0.0:8080
-}
+ err := godotenv.Load()
 
+ if err != nil {
+  log.Fatal(err)
+ }
+
+ srv := &api.Server{}
+
+ dsn := os.Getenv("DB_DSN")
+
+ srv.InitDb(dsn)
+ srv.InitGin()
+
+ srv.RegisterRoutes()
+
+ srv.Start(":8050") // Or grab this from the env, too!
+}
