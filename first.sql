@@ -75,3 +75,4 @@ SELECT first_name , last_name FROM players;
 
 
 SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;
+SELECT * FROM coach;

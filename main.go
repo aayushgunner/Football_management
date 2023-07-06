@@ -1,40 +1,43 @@
 // package main
- 
+
 // import (
-//     "database/sql"
-//     // "fmt"
+// 	"database/sql"
 // 	"encoding/json"
-//     _ "github.com/lib/pq"
-// 	"net/http"
 // 	"log"
+// 	"net/http"
+//     "fmt"
+// 	_ "github.com/lib/pq"
 // )
 
-// type players struct {
+// type Player struct {
 // 	FirstName string `json:"first_name"`
 // 	LastName  string `json:"last_name"`
 // }
- 
+
 // const (
-//     host     = "localhost"
-//     port     =  5432
-//     user     = "postgres"
-//     password = "golyanglyang"
-//     dbname   = "try"
+// 	host     = "localhost"
+// 	port     = 5432
+// 	user     = "postgres"
+// 	password = "golyanglyang"
+// 	dbname   = "try"
 // )
 
 // func main() {
-// http.HandleFunc("/records", retrieveRecord)
-// err := http.ListenAndServe(":8000", nil)
+// 	http.HandleFunc("/records", retrieveRecord)
+// 	err := http.ListenAndServe(":8000", nil)
 // 	if err != nil {
 // 		log.Fatal(err)
 // 	}
-	
 // }
 
 // func retrieveRecord(w http.ResponseWriter, r *http.Request) {
+// 	// Set CORS headers
+// 	w.Header().Set("Access-Control-Allow-Origin", "*")
+// 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
 // 	// Database connection string
-// 	psqlconn := "host=localhost port=5432 user=postgres password=golyanglyang dbname=try sslmode=disable"
-	
+// 	psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+
 // 	// Open the database connection
 // 	db, err := sql.Open("postgres", psqlconn)
 // 	if err != nil {
@@ -44,7 +47,7 @@
 // 	defer db.Close()
 
 // 	// Execute the SELECT query
-// 	rows, err := db.Query("SELECT first_name, last_name FROM players")
+// 	rows, err := db.Query("SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;")
 // 	if err != nil {
 // 		http.Error(w, err.Error(), http.StatusInternalServerError)
 // 		return
@@ -52,17 +55,17 @@
 // 	defer rows.Close()
 
 // 	// Create a slice to store the retrieved records
-// 	students := []players{}
+// 	players := []Player{}
 
 // 	// Iterate over the rows and populate the slice
 // 	for rows.Next() {
-// 		var student players
-// 		err := rows.Scan( &student.FirstName, &student.LastName)
+// 		var player Player
+// 		err := rows.Scan(&player.FirstName, &player.LastName)
 // 		if err != nil {
 // 			log.Println(err)
 // 			continue
 // 		}
-// 		students = append(students, student)
+// 		players = append(players, player)
 // 	}
 
 // 	// Check for any errors encountered during row iteration
@@ -72,7 +75,7 @@
 // 	}
 
 // 	// Convert the data to JSON
-// 	jsonData, err := json.Marshal(students)
+// 	jsonData, err := json.Marshal(players)
 // 	if err != nil {
 // 		http.Error(w, err.Error(), http.StatusInternalServerError)
 // 		return
@@ -83,24 +86,17 @@
 
 // 	// Write the JSON response
 // 	w.Write(jsonData)
-	
-// 	}
- 
-// func CheckError(err error) {
-//     if err != nil {
-//         panic(err)
-//     }
 // }
+
 
 package main
 
 import (
 	"database/sql"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
-
+	"fmt"
 	_ "github.com/lib/pq"
 )
 
@@ -118,14 +114,23 @@ const (
 )
 
 func main() {
-	http.HandleFunc("/records", retrieveRecord)
+	http.HandleFunc("/records/Mikel", retrieveRecordByMikel)
+	http.HandleFunc("/records/Pep", retrieveRecordByPep)
 	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func retrieveRecord(w http.ResponseWriter, r *http.Request) {
+func retrieveRecordByMikel(w http.ResponseWriter, r *http.Request) {
+	retrieveRecord(w, r, "Mikel")
+}
+
+func retrieveRecordByPep(w http.ResponseWriter, r *http.Request) {
+	retrieveRecord(w, r, "Pep")
+}
+
+func retrieveRecord(w http.ResponseWriter, r *http.Request, coachName string) {
 	// Set CORS headers
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
@@ -142,7 +147,8 @@ func retrieveRecord(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	// Execute the SELECT query
-	rows, err := db.Query("SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;")
+	query := fmt.Sprintf("SELECT first_name, last_name FROM players WHERE team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name = '%s')) ORDER BY first_name ASC;", coachName)
+	rows, err := db.Query(query)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -182,3 +188,5 @@ func retrieveRecord(w http.ResponseWriter, r *http.Request) {
 	// Write the JSON response
 	w.Write(jsonData)
 }
+
+
