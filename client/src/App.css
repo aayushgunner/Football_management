@@ -1,4 +1,4 @@
-body{
+.haha{
 
   background-image: url("../../images/weather_2.jpg");
   background-size:cover;
@@ -7,10 +7,8 @@ body{
   align-items: center;
   color: rgb(46, 40, 97);
   background-position: center; 
-   display: flex;  
-   justify-content: center;
-   font-size: calc(10px + 2vmin);
-   text-align: center;
+ 
+
   
 }
 
