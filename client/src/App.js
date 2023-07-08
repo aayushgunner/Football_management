@@ -65,6 +65,7 @@ function App() {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState(false);
   const [coach, setCoach] = useState('');
+  const [routes, setRoutes] = useState('');
 
   const fetchData = (coachName) => {
     if (showTable && coach === coachName) {
@@ -88,13 +89,13 @@ function App() {
     <div className="haha">
       <h1>Football League</h1>
       <div className='Nav-disp'>
-        <a href  ="#home" >Home</a>
-        <a href ="#fixtures">Fixtures</a>
-        <a href ="#Results">Resuts</a>
-        <a href ="#Stats">Stats</a>
-
+        <a href  ="#home" onClick={()=>{setRoutes('home')}}>Home</a>
+        <a href ="#fixtures" onClick={()=>{setRoutes('fixtures')}}>Fixtures</a>
+        <a href ="#Results" onClick={()=>{setRoutes('results')}}>Resuts</a>
+        <a href ="#Stats" onClick={()=>{setRoutes('stats')}}>Stats</a>
       </div>
-      
+      {(routes === 'stats') && 
+      (<>
       <button onClick={() => fetchData('Mikel')}>
         {showTable && coach === 'Mikel' ? 'Hide Table' : 'Show Mikel'}
       </button>
@@ -118,7 +119,8 @@ function App() {
             ))}
           </tbody>
         </table>
-      )}
+      )}</>
+      )} 
     </div>
   );
 }
