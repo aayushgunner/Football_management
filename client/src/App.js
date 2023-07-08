@@ -60,7 +60,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import './navi.css'
 function App() {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState(false);
@@ -85,8 +85,16 @@ function App() {
   };
 
   return (
-    <div className="background_lol">
-      <h1>Player Information</h1>
+    <div className="haha">
+      <h1>Football League</h1>
+      <div className='Nav-disp'>
+        <a href  ="#home" >Home</a>
+        <a href ="#fixtures">Fixtures</a>
+        <a href ="#Results">Resuts</a>
+        <a href ="#Stats">Stats</a>
+
+      </div>
+      
       <button onClick={() => fetchData('Mikel')}>
         {showTable && coach === 'Mikel' ? 'Hide Table' : 'Show Mikel'}
       </button>
