@@ -1,0 +1,261 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* === Plugin styles === */
+
+@import "~react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+@import "~chartist/dist/chartist.min.css";
+@import "~nouislider/distribute/nouislider.min.css";
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~react-bootstrap-typeahead/css/Typeahead.css';
+@import '~react-bootstrap-typeahead/css/Typeahead-bs4.css';
+@import '~react-datepicker/dist/react-datepicker.css';
+
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+@import "./assets/styles/variables";
+@import "~compass-mixins/lib/compass";
+@import "~compass-mixins/lib/animate";
+@import "~bootstrap/scss/bootstrap";
+@import "./assets/styles/fonts";
+@import "./assets/styles/functions";
+
+/* === Icon fonts === */
+@import "~ti-icons/css/themify-icons.css";
+@import "~@mdi/font/scss/materialdesignicons";
+@import "~font-awesome/scss/font-awesome";
+@import "~flag-icon-css/sass/flag-icon";
+@import "~simple-line-icons/scss/simple-line-icons";
+@import "~simple-line-icons/scss/simple-line-icons";
+@import "~typicons.font/src/font/typicons.css";
+
+
+/* === Template mixins === */
+@import "./assets/styles/mixins/animation";
+@import "./assets/styles/mixins/badges";
+@import "./assets/styles/mixins/buttons";
+@import "./assets/styles/mixins/misc";
+@import "./assets/styles/mixins/color-functions";
+@import "./assets/styles/mixins/cards";
+@import "./assets/styles/mixins/blockqoute";
+@import "./assets/styles/mixins/popovers";
+@import "./assets/styles/mixins/tooltips";
+@import "./assets/styles/mixins/no-ui-slider";
+
+
+/* === Core Styles === */
+@import "./assets/styles/background";
+@import "./assets/styles/typography";
+@import "./assets/styles/reset";
+@import "./assets/styles/responsive";
+@import "./assets/styles/misc";
+@import "./assets/styles/utilities";
+@import "./assets/styles/demo";
+@import "./assets/styles/spinner";
+@import "./assets/styles/dashboard";
+
+/* === Components === */
+
+@import "./assets/styles/components/widgets";
+@import "./assets/styles/components/forms";
+@import "./assets/styles/components/checkbox-radio";
+@import "./assets/styles/components/icons";
+@import "./assets/styles/components/tables";
+@import "./assets/styles/components/accordions";
+@import "./assets/styles/components/buttons";
+@import "./assets/styles/components/breadcrumbs";
+@import "./assets/styles/components/badges";
+@import "./assets/styles/components/cards";
+@import "./assets/styles/components/preview";
+@import "./assets/styles/components/tooltips";
+@import "./assets/styles/components/user-profile";
+@import "./assets/styles/components/popovers";
+@import "./assets/styles/components/lists";
+@import "./assets/styles/components/bootstrap-progress";
+@import "./assets/styles/components/bootstrap-alerts";
+@import "./assets/styles/components/tabs";
+@import "./assets/styles/components/dropdowns";
+@import "./assets/styles/components/pagination";
+@import "./assets/styles/components/loaders/loaders";
+@import "./assets/styles/components/timeline";
+@import "./assets/styles/components/portfolio";
+@import "./assets/styles/components/pricing-table";
+@import "./assets/styles/components/email/mail-list-container";
+@import "./assets/styles/components/email/mail-sidebar";
+@import "./assets/styles/components/email/message-content";
+@import "./assets/styles/components/todo-list";
+@import "./assets/styles/components/spinner";
+@import "./assets/styles/components/tickets";
+@import "./assets/styles/components/project-list";
+@import "./assets/styles/components/product-tile";
+@import "./assets/styles/components/user-listing";
+@import "./assets/styles/components/landing";
+@import "./assets/styles/components/chats";
+@import "./assets/styles/components/kanban";
+@import "./assets/styles/components/react-table";
+
+@import "./assets/styles/components/landing-screens/auth";
+
+/* === Plugin Overrides === */
+@import "./assets/styles/components/plugin-overrides/contex-menu";
+@import "./assets/styles/components/plugin-overrides/no-ui-slider";
+@import "./assets/styles/components/plugin-overrides/slick-carousel";
+@import "./assets/styles/components/plugin-overrides/rating";
+@import "./assets/styles/components/plugin-overrides/date-picker";
+@import "./assets/styles/components/plugin-overrides/wizard";
+@import "./assets/styles/components/plugin-overrides/react-bootstrap-table";
+@import "./assets/styles/components/plugin-overrides/sweet-alert";
+@import "./assets/styles/components/plugin-overrides/full-calendar";
+@import "./assets/styles/components/plugin-overrides/react-photo-gallery";
+@import "./assets/styles/components/plugin-overrides/react-tag-autocomplete";
+@import "./assets/styles/components/plugin-overrides/jquery-jvectormap";
+@import "./assets/styles/components/plugin-overrides/react-table";
+
+/* === Layout === */
+@import "./assets/styles/navbar";
+@import "./assets/styles/sidebar";
+@import "./assets/styles/footer";
+@import "./assets/styles/layout";
+@import "./assets/styles/settings-panel";
+
+/* ============== PLUGIN PRIMEREACT ============= */
+@import '~primeicons/primeicons.css';
+.btn-rounded{
+    max-height: 28.5px;
+    border-radius: 10px !important;
+}
+.btn-gradient-primary {
+    width: 100% !important;
+    height: 36px !important;
+    max-height: 36px;
+    background: linear-gradient(240deg, #2d9aff, #2970f1);
+    border-radius: 4px !important;
+    border: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: .451508px;
+}
+.p-input-icon-left {
+    i {
+        transform: translate(2px, -2px);
+        color: #ced4da !important;
+    }
+
+    #search-bar-0 {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1rem;
+        color: #495057;
+        background: #ffffff;
+        padding: 0.5rem 0.5rem;
+        border: 1px solid #ced4da;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+        appearance: none;
+        border-radius: 3px;
+        padding-left: 2rem;
+        margin: 0;
+        height: 39px;
+    }
+
+    input:enabled:hover {
+        border-color: #2196F3 !important;
+    }
+
+    input:enabled:focus {
+        outline: 0 none;
+        border-color: #2196F3 !important;
+        outline-offset: 0;
+        box-shadow: 0 0 0 0.2rem #a6d5fa;
+        border-color: #2196F3;
+    }
+}
+
+.justify-content-center-top {
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    flex-direction: row;
+    width: 100%;
+
+    button {
+        max-width: 213px !important;
+        height: 39px !important;
+    }
+}
+.pen_btn{
+    background-color: #296ff100;
+    border-color: #296ff100;
+    display: flex;
+    align-items: center;
+    img{
+        height: 38px !important;
+        width: 16px !important;
+    }
+}
+.padding_bot{
+    padding-bottom: 15px;
+}
+.btn-rounded{
+    display: flex;
+    align-items: center;
+    img{
+        margin-right: 4.8px;
+        height: 38px !important;
+        width: 16px !important;
+    }
+}
+.pen_btn:hover, .pen_btn:focus, .pen_btn:active{
+    background-color: #0f5be517 !important;
+    border-color: #0f5be517 !important;
+}
+.delete_btn:hover, .delete_btn:focus, .delete_btn:active{
+    background-color: rgb(233 30 99 / 13%)  !important;
+    border-color: rgb(233 30 99 / 13%)  !important;
+}
+.delete_btn{
+    background-color: #296ff100;
+    border-color: #296ff100;
+    display: flex;
+    align-items: center;
+    img{
+        height: 39px !important;
+        width: 17px !important;
+    }
+}
+thead {
+    background-color: #f0f2f3;
+}
+tbody {
+    td {
+        border: none !important;
+    }
+    tr:nth-child(2) {
+        background-color: #fbfdff;
+    }
+
+    tr:hover {
+        background-color: #f6faff;
+        cursor: pointer;
+    }
+    tr {
+
+        td:nth-child(3),
+        td:nth-child(4) {
+            label {
+                border-radius: 10px;
+                border: none;
+                line-height: 1.5;
+                padding-top: 0.375rem;
+                padding-bottom: 0.375rem;
+            }
+        }
+    }
+}
