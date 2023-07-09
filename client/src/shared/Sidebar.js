@@ -1,9 +1,11 @@
 import React from 'react'
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useLocation } from "react-router-dom";
 import { Trans } from "react-i18next";
+
 const Sidebar = () => {
+    const location = useLocation()
     const isPathActive = (path) => {
-        return false;
+        return location.pathname.startsWith(path);;
     }
   return (
     <nav className="sidebar sidebar-offcanvas" id="sidebar">
@@ -48,11 +50,11 @@ const Sidebar = () => {
       </li>
       <li
         className={
-          isPathActive("/all-users") ? "nav-item active" : "nav-item"
+          isPathActive("/players") ? "nav-item active" : "nav-item"
         }
       >
-        <Link className="nav-link" to="/all-users">
-          <span className="menu-title">User Management</span>
+        <Link className="nav-link" to="/players">
+          <span className="menu-title">Player Management</span>
           <i className="mdi mdi-account-multiple menu-icon"></i>
         </Link>
       </li>
