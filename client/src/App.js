@@ -59,8 +59,15 @@
 
   import React, { useState , useEffect} from 'react';
   import axios from 'axios';
-  import './App.css';
+  // import './App.css';
   import './navi.css'
+  import './App.scss'
+import Navbar from './shared/Navbar';
+import Sidebar from './shared/Sidebar';
+import AppRoutes from "./AppRoutes";
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
   function App() {
     const [data, setData] = useState([]);
     const [showTable, setShowTable] = useState(false);
@@ -126,78 +133,19 @@
 
     
     return (
-      <div className="haha">
-        <h1>Football League</h1>
-        <div className='Nav-disp'>
-          <a href  ="#home" onClick={()=>{setRoutes('home')}}>Home</a>
-          <a href ="#fixtures" onClick={()=>{setRoutes('fixtures')}}>Fixtures</a>
-          <a href ="#Results" onClick={()=>{setRoutes('results')}}>Resuts</a>
-          <a href ="#Stats" onClick={()=>{setRoutes('stats')}}>Stats</a>
+      <>
+       <div className="container-scroller">
+      <Navbar/>
+      <div className="container-fluid page-body-wrapper">
+          <Sidebar/>
+          <div className="main-panel">
+            <div className="content-wrapper">
+              <AppRoutes />
+            </div>
+          </div>
         </div>
-
-        {(routes === 'home') && (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="teamname">Team name</label>
-        <input type="text" id="teamname" name="fname" value={team} onChange={(e) => setTeam(e.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
-
-      {showTable && (
-        <table>
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.first_name}</td>
-                <td>{item.last_name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
-  )}
-      
-          {(routes === 'stats') && 
-          (<>
-        <button onClick={() => fetchData('Mikel')}>
-          {showTable && coach === 'Mikel' ? 'Hide Table' : 'Show Mikel'}
-        </button>
-        <button onClick={() => fetchData('Pep')}>
-          {showTable && coach === 'Pep' ? 'Hide Table' : 'Show Pep'}
-        </button>
-        {showTable && routes==='stats' && (
-          <table>
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}</>
-        )} 
-
-        {routes !== 'home' && routes  !== 'stats'  && 
-        <p>
-          Page is not updated. Stay tuned!!
-        </p>
-        }
       </div>
+      </>
     );
   }
 
