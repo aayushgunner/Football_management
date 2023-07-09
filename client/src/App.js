@@ -98,11 +98,13 @@
 
 
     const sendData = (teamName)=> {
-      if (showTable && team ===teamName) {
-        setShowTable(false);
-        setTeam('');
-      }
-        else {
+      // console.log(teamName)
+      // if (showTable && team ===teamName) {
+      //   console.log('this')
+      //   setShowTable(false);
+      //   setTeam('');
+      // }
+      //   else {
           axios
           .get(`http://localhost:8000/records/${teamName}`)
           .then ((response)=> {
@@ -113,7 +115,7 @@
           .catch((error)=> {
             console.error(error);
           });
-        }
+        // }
       };
 
       const handleFormSubmit = (e) => {
