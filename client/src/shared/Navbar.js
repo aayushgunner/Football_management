@@ -46,7 +46,7 @@ const Navbar = () => {
     <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <Link className="navbar-brand brand-logo" to="/">
-          {/* <img src={require("../../assets/images/logo1.svg")} alt="logo" /> */}
+          <img src={require("../assets/images/premierleague.png")} alt="logo" style={{height: '55px'}}/>
         </Link>
         <Link className="navbar-brand brand-logo-mini" to="/">
           {/* <img src={require("../../assets/images/logo-mini.svg")} alt="logo" /> */}
