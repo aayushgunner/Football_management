@@ -17,7 +17,7 @@ const Sidebar = () => {
       >
         <Link className="nav-link" to="/dashboard">
           <span className="menu-title">
-            <Trans>Dashboard</Trans>
+            <Trans>Home</Trans>
           </span>
           <i className="mdi mdi-home menu-icon"></i>
         </Link>
@@ -28,7 +28,7 @@ const Sidebar = () => {
         }
       >
         <Link className="nav-link" to="/players">
-          <span className="menu-title">Player Management</span>
+          <span className="menu-title">Fixtures</span>
           <i className="mdi mdi-account-multiple menu-icon"></i>
         </Link>
       </li>
@@ -38,7 +38,7 @@ const Sidebar = () => {
         }
       >
         <Link className="nav-link" to="/companies">
-          <span className="menu-title">Companies</span>
+          <span className="menu-title">Results</span>
           <i className="mdi mdi-briefcase menu-icon"></i>
         </Link>
       </li>
@@ -48,7 +48,7 @@ const Sidebar = () => {
         }
       >
         <Link className="nav-link" to="/error-codes">
-          <span className="menu-title">Error Codes</span>
+          <span className="menu-title">Tables</span>
           <i className="mdi mdi-information-variant menu-icon"></i>
         </Link>
       </li>
@@ -60,7 +60,7 @@ const Sidebar = () => {
         }
       >
         <Link className="nav-link" to="/subscription-plans">
-          <span className="menu-title">Subscription Plans</span>
+          <span className="menu-title">Transfers</span>
           <i className="mdi mdi-currency-gbp menu-icon"></i>
         </Link>
       </li>
@@ -70,40 +70,8 @@ const Sidebar = () => {
         }
       >
         <Link className="nav-link" to="/coupons">
-          <span className="menu-title">Coupon Codes</span>
+          <span className="menu-title">Stats</span>
           <i className="mdi mdi-currency-gbp menu-icon"></i>
-        </Link>
-      </li>
-      <li
-        className={
-          isPathActive("/compliance-forms")
-            ? "nav-item active"
-            : "nav-item"
-        }
-      >
-        <Link className="nav-link" to="/compliance-forms">
-          <span className="menu-title">Compliance Forms</span>
-          <i className="mdi mdi-currency-gbp menu-icon"></i>
-        </Link>
-      </li>
-      <li
-        className={
-          isPathActive("/manage-roles") ? "nav-item active" : "nav-item"
-        }
-      >
-        <Link className="nav-link" to="/manage-roles">
-          <span className="menu-title">Manage Roles</span>
-          <i className="mdi mdi-account-multiple menu-icon"></i>
-        </Link>
-      </li>
-      <li
-        className={
-          isPathActive("/email-sequencing") ? "nav-item active" : "nav-item"
-        }
-      >
-        <Link className="nav-link" to="/email-sequencing">
-          <span className="menu-title">Email sequencing</span>
-          <i className="mdi mdi-briefcase menu-icon"></i>
         </Link>
       </li>
      

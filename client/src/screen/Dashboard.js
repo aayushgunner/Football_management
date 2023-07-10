@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <table>
+      <tr>
+        <td>
+          Arsenal
+        </td>
+      </tr>
+    </table>
   )
 }
 

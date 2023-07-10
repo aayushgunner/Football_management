@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	router := mux.NewRouter()
-	routes.RegisterRoutes(router)
-
-	log.Fatal(http.ListenAndServe(":8080", router))
+	
+	
 }
