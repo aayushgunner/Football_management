@@ -1,0 +1,45 @@
+body{
+  background-image: url("../images/23.png");
+  background-size: contain;
+  height: 1000px;
+  background-repeat: no-repeat;
+  align-items: center;
+  color: rgb(46, 40, 97);
+  background-position: center;
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 20%;
+}
+
+table,
+td,
+th {
+  border: 1px solid #aca3a3;
+  padding: 8px;
+  color: black;
+}
+
+table,
+tr:nth-child(even) {
+  background-color: #8f8d8d;
+}
+table,
+tr:nth-child(odd) {
+  background-color: #aca9a9;
+}
+table,
+tr:hover {
+  background-color: coral;
+}
+
+table,
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d;
+  color: white;
+}

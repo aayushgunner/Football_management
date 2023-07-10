@@ -90,7 +90,7 @@
 //                 >
 //                   {/*<i className="mdi mdi-pencil btn-icon-prepend"></i>*/}Login
 //                 </button>
-    
+
 //                 <button
 //                   className="btn btn-info py-1 px-2 btn-icon-text btn-rounded"
 //                 //   onClick={() => this.viewCompaniesList(row)}
@@ -213,76 +213,98 @@
 
 // export default Players
 
-import React, { useState , useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "../assets/styles/table.css";
 const Players = () => {
   const [data, setData] = useState([]);
-  const [teams , setTeams] = useState([]);
+  const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
-  const [showtable , setShowTable] =useState([]);
+  const [showtable, setShowTable] = useState([]);
+  const [selectedteamPhoto, setSelectedTeamPhoto] = useState("");
 
-  // useEffect(() => {
-  //   clearData();
-  // }, [routes]);
 
-    const clearData =  () => {
-      setData([]);
-    }
+  useEffect(() => {
+    fetchTeams(); // Fetch teams when the component mounts
+  }, []);
+  const clearData = () => {
+    setData([]);
+  };
 
-    const fetchById = (id) => {
-      axios
+  const fetchById = (id) => {
+    axios
       .get(`http://localhost:8000/records/${id}`)
-      .then ((response)=> {
-        console.log(response.data)
+      .then((response) => {
+        console.log(response.data);
         // console.log('teamssss')
         setPlayers(response.data);
         setShowTable(true);
+        setSelectedTeamPhoto(response.data.photo);
         // setTeams(teamName);
       })
-      .catch((error)=> {
-      console.error(error);
+      .catch((error) => {
+        console.error(error);
       });
-    }
+  };
 
-    const fetchTeams = () => {
-      axios
+  const fetchTeams = () => {
+    axios
       .get(`http://localhost:8000/teams/`)
-      .then ((response)=> {
-        console.log(response.data)
+      .then((response) => {
+        console.log(response.data);
         // console.log('teamssss')
         setTeams(response.data);
         setShowTable(true);
         // setTeams(teamName);
       })
-      .catch((error)=> {
-      console.error(error);
+      .catch((error) => {
+        console.error(error);
       });
-    }
+  };
 
+  
 
   return (
     <>
-      <div>
-            
-      </div> 
-    <table>
-          <thead>
-            <tr>
-              <th>Team Name</th>
+    <body>
+      <div >{/* <img src={require("../assets/images/saka.png")}></img> */}</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Team Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.map((item, index) => (
+            <tr key={index} onClick={()=> fetchById(item.team_id)}>
+              <td>{item.team_name}</td>
+              {/* <td>{item.last_name}</td> */}
             </tr>
-          </thead>
-          <tbody>
-            {teams.map((item, index) => (
-              <tr key={index} onClick={()=> fetchById(item.team_id)}>
-                <td>{item.team_name}</td>
-                {/* <td>{item.last_name}</td> */}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        </>
+          ))}
+        </tbody>
+      </table>
     
-  )
-}
+    {players.length > 0 && 
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {players.map((item, index) => (
+            <tr key={index} >
+              <td>{item.first_name}</td>
+              <td>{item.last_name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    }
+      </body>
+    </>
+  );
+};
 
-export default Players
+export default Players;

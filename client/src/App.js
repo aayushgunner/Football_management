@@ -62,6 +62,7 @@
   // import './App.css';
   import './navi.css'
   import './App.scss'
+  
 import Navbar from './shared/Navbar';
 import Sidebar from './shared/Sidebar';
 import AppRoutes from "./AppRoutes";
