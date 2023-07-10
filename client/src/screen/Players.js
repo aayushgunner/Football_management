@@ -213,19 +213,76 @@
 
 // export default Players
 
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import axios from 'axios';
+const Players = () => {
+  const [data, setData] = useState([]);
+  const [teams , setTeams] = useState([]);
+  const [players, setPlayers] = useState([]);
+  const [showtable , setShowTable] =useState([]);
 
-const players = () => {
+  // useEffect(() => {
+  //   clearData();
+  // }, [routes]);
+
+    const clearData =  () => {
+      setData([]);
+    }
+
+    const fetchById = (id) => {
+      axios
+      .get(`http://localhost:8000/records/${id}`)
+      .then ((response)=> {
+        console.log(response.data)
+        // console.log('teamssss')
+        setPlayers(response.data);
+        setShowTable(true);
+        // setTeams(teamName);
+      })
+      .catch((error)=> {
+      console.error(error);
+      });
+    }
+
+    const fetchTeams = () => {
+      axios
+      .get(`http://localhost:8000/teams/`)
+      .then ((response)=> {
+        console.log(response.data)
+        // console.log('teamssss')
+        setTeams(response.data);
+        setShowTable(true);
+        // setTeams(teamName);
+      })
+      .catch((error)=> {
+      console.error(error);
+      });
+    }
+
+
   return (
+    <>
+      <div>
+            
+      </div> 
     <table>
-      <tr>
-        <th>
-          Team Display
-        </th>
-      </tr>
-    </table>
+          <thead>
+            <tr>
+              <th>Team Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            {teams.map((item, index) => (
+              <tr key={index} onClick={()=> fetchById(item.team_id)}>
+                <td>{item.team_name}</td>
+                {/* <td>{item.last_name}</td> */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        </>
+    
   )
 }
 
-export default players
+export default Players
