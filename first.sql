@@ -46,3 +46,4 @@ CREATE TABLE players (
    team_id INT,
    FOREIGN KEY (team_id) REFERENCES team(team_id)
 );
+

@@ -3,7 +3,8 @@ import Spinner from '../shared/Spinner';
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
-import { getPlayer } from '../apiRoutes';
+  import { getPlayer } from '../apiRoutes';
+  
 const { SearchBar } = Search;
 const Players = () => {
     const [showLoader, setShowLoader] = useState(false)
