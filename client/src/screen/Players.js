@@ -1,129 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Spinner from '../shared/Spinner';
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+import { getPlayer } from '../apiRoutes';
 const { SearchBar } = Search;
 const Players = () => {
     const [showLoader, setShowLoader] = useState(false)
-    const users = [
-        {
-            firstName:'helloworld',
-            email: 'pasang@gmail.com',
-            status:'Active',
-            isConfirmed: 'Open'
-        },
-        {
-            firstName:'helloworld1',
-            email: 'pasang1@gmail.com',
-            status:'Active',
-            isConfirmed: 'Open'
-        },
-        {
-            firstName:'helloworld2',
-            email: 'pasang2@gmail.com',
-            status:'Active',
-            isConfirmed: 'Open'
-        }
-    ]
+    const [users, setUsers] = useState([])
+    useEffect(()=>{
+      getPlayer().then((res)=>{
+        setUsers(res)
+      })
+    },[])
     const   columns = [
         {
-          dataField: "firstName",
-          text: "Name",
+          dataField: "first_name",
+          text: "FirstName",
           sort: true,
         },
         {
-          dataField: "email",
-          text: "Email",
+          dataField: "last_name",
+          text: "LastName",
           sort: true,
         },
         {
-          dataField: "status",
-          text: "Status",
+          dataField: "position",
+          text: "Position",
           sort: true,
-          formatter: (cellContent, row) => {
-            if (cellContent === 0) {
-              return <label className="badge badge-danger">In-active</label>;
-            } else if (cellContent === 1) {
-              return <label className="badge badge-success">Active</label>;
-            } else if (cellContent === "Closed") {
-              return <label className="badge badge-success">Closed</label>;
-            } else if (cellContent === "Open") {
-              return <label className="badge badge-warning">Open</label>;
-            }
-          },
-        },
-        {
-          dataField: "isConfirmed",
-          text: "Verified",
-          sort: true,
-          formatter: (cellContent, row) => {
-            if (cellContent === false) {
-              return <label className="badge badge-danger">No</label>;
-            } else if (cellContent === true) {
-              return <label className="badge badge-success">Yes</label>;
-            } else if (cellContent === "Closed") {
-              return <label className="badge badge-success">Closed</label>;
-            } else if (cellContent === "Open") {
-              return <label className="badge badge-warning">Open</label>;
-            }
-          },
-        },
-        {
-          dataField: "action",
-          text: "Action",
-          sort: false,
-          formatter: (cell, row) => {
-            return (
-              <div className="d-flex">
-                <button
-                  className="btn btn-primary py-1 px-2 btn-icon-text btn-rounded"
-                  onClick={() => {
-                    // assignUserCompany(row._id)
-                    //   .then((res) => {
-                    //     console.log(res);
-                    //   })
-                    //   .catch((err) => {
-                    //     console.log(err);
-                    //   });
-                  }}
-                >
-                  {/*<i className="mdi mdi-pencil btn-icon-prepend"></i>*/}Login
-                </button>
-    
-                <button
-                  className="btn btn-info py-1 px-2 btn-icon-text btn-rounded"
-                //   onClick={() => this.viewCompaniesList(row)}
-                >
-                  <i className="mdi mdi-eye btn-icon-prepend"></i>
-                  Companies list
-                </button>
-                <button
-                  className="btn btn-primary py-1 px-2 btn-icon-text btn-rounded pen_btn"
-                  onClick={() => this.editUser(row)}
-                >
-                  <img src={require("../assets/images/pen.svg")} />
-                </button>
-                <button
-                  className="btn btn-danger py-1 px-2 btn-icon-text btn-rounded delete_btn"
-                //   onClick={() =>
-                //     // confirmDialog({
-                //     //   message: "Do you want to delete this record?",
-                //     //   header: "Delete Confirmation",
-                //     //   icon: "pi pi-info-circle",
-                //     //   acceptClassName: "p-button-danger",
-                //     //   accept: () => {
-                //     //     this.deleteUser(row);
-                //     //   },
-                //     // })
-                //   }
-                >
-                  <img src={require("../assets/images/trash.svg")} />
-                </button>
-              </div>
-            );
-          },
-        },
+        }
       ];
   return (
     <div className="row">
@@ -142,7 +47,7 @@ const Players = () => {
                   search
                 >
                   {(props) => {
-                    const data = props.baseProps.data.reverse(); // Invertir el orden de los datos
+                    const data = props.baseProps.data
 
                     return (
                       <div>
