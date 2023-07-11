@@ -34,11 +34,11 @@ const Sidebar = () => {
       </li>
       <li
         className={
-          isPathActive("/companies") ? "nav-item active" : "nav-item"
+          isPathActive("/Stats") ? "nav-item active" : "nav-item"
         }
       >
-        <Link className="nav-link" to="/companies">
-          <span className="menu-title">Companies</span>
+        <Link className="nav-link" to="/Stats">
+          <span className="menu-title">Stats</span>
           <i className="mdi mdi-briefcase menu-icon"></i>
         </Link>
       </li>
