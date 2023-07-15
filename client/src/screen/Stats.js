@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../assets/styles/stats.css';
 import Modal from 'react-modal';
 import footballImage from '../assets/images/saka.png';
+import { getPlayer, getStat, getTeam } from '../apiRoutes';
 
 const Stats = () => {
   const [data, setData] = useState([]);
@@ -23,8 +24,7 @@ const Stats = () => {
   };
 
   const fetchTeams = () => {
-    axios
-      .get(`http://localhost:8000/teams/`)
+    getTeam()
       .then((response) => {
         console.log(response.data);
         setTeams(response.data);
@@ -36,8 +36,7 @@ const Stats = () => {
   };
 
   const fetchPlayers = () => {
-    axios
-      .get(`http://localhost:8000/players/`)
+   getPlayer
       .then((response) => {
         console.log(response.data);
         setPlayers(response.data);
@@ -50,8 +49,7 @@ const Stats = () => {
 
   const fetchStats = (player_name,player_id) => {
     console.log(player_id)
-    axios
-      .get(`http://localhost:8000/stats/${player_id}`)
+    getStat(player_id)
       .then((response) => {
         console.log('fetchStats()')
         console.log(response.data);

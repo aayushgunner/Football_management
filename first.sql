@@ -1,14 +1,12 @@
-DROP table If EXISTS teams;
+DROP table If EXISTS team;
 
 
-CREATE TABLE teams (
+CREATE TABLE team (
    team_id SERIAL PRIMARY KEY,
-   Team_name VARCHAR,
+   team_name VARCHAR,
    Abbreviation VARCHAR,
    hex_code VARCHAR,
-   logo VARCHAR,
+   team_logo VARCHAR,
    Stadium VARCHAR  
-
-
 )
 
