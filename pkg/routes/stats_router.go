@@ -6,5 +6,5 @@ import (
 )
 
 func StatsRoutes(router *mux.Router) {
-	router.HandleFunc("/stats", controllers.RetrieveStatsById).Methods("GET")
+	router.HandleFunc("/stats/{id}", controllers.RetrieveStatsById).Methods("GET")
 }

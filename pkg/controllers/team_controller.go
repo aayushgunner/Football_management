@@ -18,7 +18,7 @@ func RetrieveTeams(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// Query the database
-		rows, err := DB.Query(`SELECT team_id, team_name, abbreviation, hex_code, team_logo, stadium from team;`)
+		rows, err := DB.Query(`SELECT team_id, team_name, abbreviation, hex_code,logo, stadium from teams;`)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

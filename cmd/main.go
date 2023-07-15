@@ -10,9 +10,9 @@ import (
 	"database/sql"
     _ "github.com/lib/pq"
 	"fmt"
-	"os"
+	// "os"
 	// "io"
-	"path/filepath"
+	// "path/filepath"
 	"football_server/pkg/controllers"
 )
 var db *sql.DB
@@ -20,7 +20,7 @@ const (
 	host     = "localhost"
 	port     = "5432"
 	user     = "postgres"
-	password = "Helloworld"
+	password = "golyanglyang"
 	dbname   = "try"
 )
 func main() {
@@ -32,16 +32,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer db.Close()
-	absPath, err := filepath.Abs("cmd/player_stats.csv")
-if err != nil {
-	log.Fatal(err)
-}
-file, err := os.Open(absPath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
+// 	defer db.Close()
+// 	absPath, err := filepath.Abs("cmd/player_stats.csv")
+// if err != nil {
+// 	log.Fatal(err)
+// }
+// file, err := os.Open(absPath)
+// 	if err != nil {_ "github.com/lib/pq"
+// 		log.Fatal(err)
+// 	}
+// 	defer file.Close()
 
 	// Create a new CSV reader
 	// reader := csv.NewReader(file)
@@ -72,8 +72,8 @@ file, err := os.Open(absPath)
 	// }
 
 	router := mux.NewRouter()
-	routes.RegisterRoutes(router)
 	routes.StatsRoutes(router)
+	routes.RegisterRoutes(router)
 	routes.TeamRoutes(router)
 
 

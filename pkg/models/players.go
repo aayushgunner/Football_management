@@ -1,9 +1,8 @@
 package models
 
 type Player struct {
-	FirstName string `json:"first_name"`
-	LastName  string `json:"last_name"`
-	PlayerId string  `json:"player_id"`
-	Position string  `json:"position"`
-    TeamId string  `json:"team_id"`
+	PlayerId int `json:"player_id"`
+	PlayerName  string `json:"player_name"`
+	TeamName string  `json:"team_name"`
+    TeamId int  `json:"team_id"`
 }

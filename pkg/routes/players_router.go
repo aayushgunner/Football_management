@@ -6,5 +6,5 @@ import (
 )
 
 func RegisterRoutes(router *mux.Router) {
-	router.HandleFunc("/players", controllers.GetAllUsers).Methods("GET")
+		router.HandleFunc("/player", controllers.GetAllUsers).Methods("GET")
 }

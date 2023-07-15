@@ -7,10 +7,12 @@ import (
 	// "database/sql"
 	"log"
 	"fmt"
+	"strings"
 	
 )
 func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
-	id := r.URL.Path[len("/stats/"):]
+	id := strings.TrimPrefix(r.URL.Path, "/stats/")
+	fmt.Println(id)
 		// Check if the request is a "GET" request
 		if r.Method != "GET" {
 			// fmt.Println("hellworold")
@@ -19,7 +21,7 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// Query the database
-		query := fmt.Sprintf("SELECT games, Mins_played, goal, assists, shots, key_passes, yellow_cards, red_cards, position FROM stats WHERE stat_id = %s LIMIT 1", id)
+		query := fmt.Sprintf("SELECT games, mins_played, goal, assists, shots, key_passes, yellow_cards, red_cards, position FROM stats WHERE player_id = '%s' LIMIT 1;", id)
 		rows, err := DB.Query(query)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -39,7 +41,6 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 				continue
 			}
 			stats = append(stats, stat)
-			fmt.Println(stat)
 		}
 	
 		// Check for any errors encountered during row iteration
@@ -48,7 +49,6 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	
-		fmt.Println(`id := `, stats)
 	
 		// Check if any stats were retrieved
 		if len(stats) == 0 {

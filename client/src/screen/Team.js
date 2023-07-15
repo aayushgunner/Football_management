@@ -39,10 +39,10 @@ const Team = () => {
       >
         <img
           src={team.logo}
-          alt={team.Team_name}
+          alt={team.team_name}
           className="Team_Card_Photo"
         />
-        <h3>{team.Team_name}</h3>
+        <h3>{team.team_name}</h3>
         <img
           src={require("../assets/images/hello.svg")}
           className="Team_Card_Svg club-card__svg club-card__gradient-svg"

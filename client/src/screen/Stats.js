@@ -22,48 +22,50 @@ const Stats = () => {
     setData([]);
     setShowTable(false);
   };
-
   const fetchTeams = () => {
-    getTeam()
-      .then((response) => {
-        console.log(response.data);
-        setTeams(response.data);
-        setShowTable(true);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+    axios
+    .get(`http://localhost:8080/teams`)
+    .then ((response)=> {
+      console.log(response.data)
+      // console.log('teamssss')
+      setTeams(response.data);
+      setShowTable(true);
+      // setTeams(teamName);
+    })
+    .catch((error)=> {
+    console.error(error);
+    });
+  }
 
   const fetchPlayers = () => {
-   getPlayer
-      .then((response) => {
-        console.log(response.data);
-        setPlayers(response.data);
-        setShowTable(true);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  axios
+    .get(`http://localhost:8080/player`)
+    .then((response) => {
+      console.log(response.data);
+      setPlayers(response.data);
+      setShowTable(true);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
-  const fetchStats = (player_name,player_id) => {
-    console.log(player_id)
-    getStat(player_id)
-      .then((response) => {
-        console.log('fetchStats()')
-        console.log(response.data);
+const fetchStats = (player_name, player_id) => {
+  axios
+    .get(`http://localhost:8080/stats/${player_id}`)
+    .then((response) => {
+      console.log('fetchStats()');
+      console.log(response.data);
 
-        setStats(response.data);
-        setShowTable(true);
-        response.data[0].player_name = player_name
-        setSelectedPlayer(response.data[0])
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
+      setStats(response.data);
+      setShowTable(true);
+      response.data[0].player_name = player_name;
+      setSelectedPlayer(response.data[0]);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 
   const myFunction = () => {
@@ -115,7 +117,7 @@ const Stats = () => {
             {teams.map((item, index) => (
               <tr key={index}>
                 <td>{item.team_name}</td>
-                <td>{item.Stadium}</td>
+                <td>{item.stadium}</td>
               </tr>
             ))}
           </table>

@@ -17,8 +17,9 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, http.StatusText(405), http.StatusMethodNotAllowed)
 			return
 		}
+		
 		// Query the database
-		rows, err := DB.Query(`SELECT "first_name","last_name", "player_id","position","team_id" FROM "players"`)
+		rows, err := DB.Query(`SELECT "player_id", "player_name", "team_name", "team_id" FROM player WHERE team_id 	IS NOT NULL`)
 		if err != nil {
 			fmt.Println("error")
 			log.Fatal(err)
@@ -33,7 +34,7 @@ func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 		// Loop through the rows and populate the player array
 		for rows.Next() {
 			player := models.Player{}
-			err := rows.Scan(&player.FirstName, &player.LastName, &player.PlayerId, &player.Position, &player.TeamId)
+			err := rows.Scan(&player.PlayerId, &player.PlayerName, &player.TeamName, &player.TeamId)
 			if err != nil {
 				log.Println(err)
 				http.Error(w, http.StatusText(500), http.StatusInternalServerError)
