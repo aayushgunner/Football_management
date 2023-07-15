@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../assets/styles/stats.css';
 import Modal from 'react-modal';
 import footballImage from '../assets/images/saka.png';
+import sakaImage from '../assets/images/pitch.png';
 import { getPlayer, getStat, getTeam } from '../apiRoutes';
 
 const Stats = () => {
@@ -104,6 +105,9 @@ const fetchStats = (player_name, player_id) => {
         <a href="#Players" onClick={() => { setRoutes('Players'); fetchPlayers(); }}>
           Players
         </a>
+        <a href="#Lineup" onClick={()=> {setRoutes('Lineup')}}>
+          Lineup manager
+        </a>
       </div>
 
       {routes === 'Teams' && (
@@ -201,6 +205,31 @@ const fetchStats = (player_name, player_id) => {
       </Modal>
       
       )}
+  {routes === 'Lineup' && (
+  <div className="pitch">
+    <img src={sakaImage} alt="Saka" />
+
+    <input className="myInput" type="text" id="myInput" onKeyUp={myFunction} placeholder="Search for names.." />
+    <table className="myTable" id="mytable">
+      <thead>
+        <tr className="header">
+          <th>Player Name</th>
+          <th>Club</th>
+        </tr>
+      </thead>
+      <tbody>
+        {players.map((item, index) => (
+          <tr key={index} onClick={() => { openModal(item); fetchStats(item.player_name, item.player_id) }}>
+            <td>{item.player_name}</td>
+            <td>{item.team_name}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
+
+
     </div>
   );
 };
