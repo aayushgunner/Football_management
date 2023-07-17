@@ -1,12 +1,18 @@
--- DROP table if EXISTS player;
--- CREATE table player (
--- player_id SERIAL PRIMARY KEY,
--- player_link_id INT,
--- player_name VARCHAR,
--- team_name VARCHAR,
--- team_id int,
--- FOREIGN KEY (team_id) REFERENCES teams (team_id)  
--- )
+DROP table if EXISTS player;
+CREATE table player (
+player_id SERIAL PRIMARY KEY,
+player_link_id INT,
+player_name VARCHAR,
+team_name VARCHAR,
+team_id int,
+FOREIGN KEY (team_id) REFERENCES teams (team_id)  
+)
+
+
+UPDATE player
+SET team_name = TRIM(SPLIT_PART(team_name, ',', 1))
+WHERE team_name LIKE '%,%';
+
 
 
 UPDATE player SET team_id = 1 WHERE team_name='Arsenal';
@@ -30,7 +36,3 @@ UPDATE player SET team_id = 18 WHERE team_name='Tottenham';
 UPDATE player SET team_id = 19 WHERE team_name='West Ham';
 UPDATE player SET team_id = 20 WHERE team_name='Wolverhampton Wanderers';
 
-
--- UPDATE player
--- SET team_name = TRIM(SPLIT_PART(team_name, ',', 1))
--- WHERE team_name LIKE '%,%';

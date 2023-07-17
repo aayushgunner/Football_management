@@ -157,7 +157,7 @@ const fetchStats = (player_name, player_id) => {
       >
         <div className="modal-content">
           <div className="modal-image-container">
-            <img src={footballImage} alt="Football" className="modal-image" />
+            <img src="https://resources.premierleague.com/premierleague/photos/players/250x250/p223342.png" alt="Football" className="modal-image" />
           </div>
           <div className="card-container">
             <div className="card">
