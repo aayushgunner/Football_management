@@ -79,9 +79,3 @@
 -- UPDATE fixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
 
 
--- DROP table if EXISTS HomeFixtures;
--- CREATE  table HomeFixtures (
-
-
-
--- )
