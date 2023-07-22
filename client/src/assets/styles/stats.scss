@@ -1,0 +1,44 @@
+.Model{
+    top:50%;
+    left:50%;
+    right:auto;
+    bottom:auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    // width:100%;
+    &_Content{
+        display: flex;
+        &_ImageBox{
+            height: 100%;
+            flex: 0 0 30%;
+            &_Image{
+                width:90%;
+                height: auto;
+            }
+        }
+        &_CardContainer{
+            flex:1;
+            background: 1;
+            display: flex;
+            justify-content: space-around;
+            &_Cards{
+                flex: 0 0 45%;
+                margin: 0 10px;
+                .card{
+                    margin:10px;
+                    height:auto;
+                    padding:10px;
+                    h3{
+                        font-size:25px;
+                        font-weight: 700;
+                    }
+                    p{
+                        font-size: 19px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}

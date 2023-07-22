@@ -58,6 +58,7 @@
 @import "./assets/styles/demo";
 @import "./assets/styles/spinner";
 @import "./assets/styles/dashboard";
+@import "./assets/styles/stats.scss";
 
 /* === Components === */
 
@@ -122,8 +123,6 @@
 @import "./assets/styles/footer";
 @import "./assets/styles/layout";
 @import "./assets/styles/settings-panel";
-
-@import "./assets/styles/stats.css";
 
 /* ============== PLUGIN PRIMEREACT ============= */
 @import '~primeicons/primeicons.css';
