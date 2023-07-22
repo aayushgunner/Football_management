@@ -24,6 +24,12 @@
 --  )
 
 
+
+-- UPDATE awayFixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
+UPDATE awayFixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
+UPDATE awayFixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
+-- UPDATE awayFixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
+
 UPDATE awayFixtures SET team_away_id=1 WHERE  team_away_name='Arsenal';
 UPDATE awayFixtures SET team_away_id=2 WHERE  team_away_name='Aston Villa';
 UPDATE awayFixtures SET team_away_id=3 WHERE  team_away_name='Bournemouth';
@@ -45,9 +51,3 @@ UPDATE awayFixtures SET team_away_id=18 WHERE team_away_name='Tottenham';
 UPDATE awayFixtures SET team_away_id=19 WHERE team_away_name='West Ham';
 UPDATE awayFixtures SET team_away_id=20 WHERE team_away_name='Wolverhampton Wanderers';
 
-
-
--- -- UPDATE awayFixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
--- UPDATE awayFixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
--- UPDATE awayFixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
--- -- UPDATE awayFixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';

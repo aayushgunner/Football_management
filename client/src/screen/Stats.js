@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import footballImage from '../assets/images/saka.png';
 import sakaImage from '../assets/images/pitch.png';
 import { getPlayer, getStat, getTeam } from '../apiRoutes';
+import { Link } from 'react-router-dom'
 const customStyles = {
   content: {
     top: '50%',
@@ -163,11 +164,14 @@ const fetchStats = (player_name, player_id) => {
               <th>Club</th>
             </tr>
             {players.map((item, index) => (
-              <tr key={index} onClick={() => {openModal(item);fetchStats(item.player_name,item.player_id)}}>
+             
+              <tr key={index}>
+                 <Link style={{width:'100%', display:'flex', alignItems:'center', justifyContent:'space-between'}} to={`/playerStats/${item.player_id}`}>
                 <td>{item.player_name}</td>
                 <td>{item.team_name}</td>
-              
+                </Link>
               </tr>
+  
             ))}
           </table>
         </div>

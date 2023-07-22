@@ -12,6 +12,10 @@
 -- home_goals int,
 -- away_goals int
 -- )
+UPDATE fixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
+UPDATE fixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
+UPDATE fixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
+UPDATE fixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
 
 UPDATE fixtures SET team_home_id = 1 WHERE  team_home_name='Arsenal';
 UPDATE fixtures SET team_home_id = 2 WHERE  team_home_name='Aston Villa';
@@ -59,7 +63,3 @@ UPDATE fixtures SET team_away_id=19 WHERE team_away_name='West Ham';
 UPDATE fixtures SET team_away_id=20 WHERE team_away_name='Wolverhampton Wanderers';
 
 
--- UPDATE fixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
--- UPDATE fixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
--- UPDATE fixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
--- UPDATE fixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';

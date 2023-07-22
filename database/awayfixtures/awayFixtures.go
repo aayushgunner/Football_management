@@ -42,7 +42,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.Close()
-	absPath, err := filepath.Abs("fixtures_away.csv")
+	absPath, err := filepath.Abs("database/awayfixtures/fixtures_away.csv")
 if err != nil {
 	log.Fatal(err)
 }
