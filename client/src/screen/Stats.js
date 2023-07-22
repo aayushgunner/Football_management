@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../assets/styles/stats.css';
+// import '../assets/styles/stats.css';
 import Modal from 'react-modal';
 import footballImage from '../assets/images/saka.png';
 import sakaImage from '../assets/images/pitch.png';
 import { getPlayer, getStat, getTeam } from '../apiRoutes';
-
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width:'70%',
+    background:'grey',
+    height:'80%',
+    zIndex: '1000'
+  },
+};
 const Stats = () => {
   const [data, setData] = useState([]);
   const [showTable, setShowTable] = useState(false);
@@ -13,7 +26,20 @@ const Stats = () => {
   const [teams, setTeams] = useState([]);
   const [players, setPlayers] = useState([]);
   const [stats, setStats] = useState([]);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  // const [selectedPlayer, setSelectedPlayer] = useState(null);
+  // const []
+  const [selectedPlayer, setSelectedPlayer] = useState({
+    player_name: 'Bukayo Saka',
+    games: '12',
+    mins_played: '1234',
+    goal:'12',
+    assists:'12',
+    shots:'12',
+    key_passes: '1234',
+    yellow_cards: '123',
+    red_cards: '123',
+    position:'Forward'
+  })
 
   useEffect(() => {
     clearData();
@@ -145,91 +171,85 @@ const fetchStats = (player_name, player_id) => {
             ))}
           </table>
         </div>
-      )}
-
-      {selectedPlayer && (
-        <Modal
-        isOpen={selectedPlayer !== null}
+      )}  <div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={true}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        contentLabel="Player Image"
-        className="modal-container"
-        overlayClassName="modal-overlay"
+        style={customStyles}
+        contentLabel="Example Modal"
+        // className="Model"
       >
-        <div className="modal-content">
-          <div className="modal-image-container">
-            <img src="https://resources.premierleague.com/premierleague/photos/players/250x250/p223342.png" alt="Football" className="modal-image" />
+       <div className="Model_Content">
+          <div className="Model_Content_ImageBox">
+            <img className="Model_Content_ImageBox_Image" src={footballImage} alt="Football" className="modal-image" />
           </div>
-          <div className="card-container">
+          <div className="Model_Content_CardContainer">
+            <div className="Model_Content_CardContainer_Cards">
             <div className="card">
               <h3>Player Name</h3>
-              <p>{selectedPlayer.player_name}</p>
+              <p>{selectedPlayer?.player_name}</p>
             </div>
             <div className="card">
               <h3>Games</h3>
-              <p>{selectedPlayer.games}</p>
+              <p>{selectedPlayer?.games}</p>
             </div>
             <div className="card">
               <h3>Minutes Played</h3>
-              <p>{selectedPlayer.mins_played}</p>
+              <p>{selectedPlayer?.mins_played}</p>
             </div>
             <div className="card">
               <h3>Goals</h3>
-              <p>{selectedPlayer.goal}</p>
+              <p>{selectedPlayer?.goal}</p>
             </div>
             <div className="card">
               <h3>Assists</h3>
-              <p>{selectedPlayer.assists}</p>
+              <p>{selectedPlayer?.assists}</p>
             </div>
+            </div>
+            <div className="Model_Content_CardContainer_Cards">
+           
             <div className="card">
               <h3>Shots</h3>
-              <p>{selectedPlayer.shots}</p>
+              <p>{selectedPlayer?.shots}</p>
             </div>
             <div className="card">
               <h3>Key Passes</h3>
-              <p>{selectedPlayer.key_passes}</p>
+              <p>{selectedPlayer?.key_passes}</p>
             </div>
             <div className="card">
               <h3>Yellow Cards</h3>
-              <p>{selectedPlayer.yellow_cards}</p>
+              <p>{selectedPlayer?.yellow_cards}</p>
             </div>
             <div className="card">
               <h3>Red Cards</h3>
-              <p>{selectedPlayer.red_cards}</p>
+              <p>{selectedPlayer?.red_cards}</p>
             </div>
             <div className="card">
               <h3>Position</h3>
-              <p>{selectedPlayer.position}</p>
+              <p>{selectedPlayer?.position}</p>
+            </div>
             </div>
           </div>
         </div>
       </Modal>
+    </div>
+
+
+      {/* {selectedPlayer && ( */}
+        <Modal
+        isOpen={true}
+        onRequestClose={closeModal}
+        contentLabel="Player Image"
+        // style={customStyles}
+        className="modal-container"
+        overlayClassName="modal-overlay"
+      >
+        
+      </Modal>
       
-      )}
-  {routes === 'Lineup' && (
-  <div className="pitch">
-    <img src={sakaImage} alt="Saka" />
-
-    <input className="myInput" type="text" id="myInput" onKeyUp={myFunction} placeholder="Search for names.." />
-    <table className="myTable" id="mytable">
-      <thead>
-        <tr className="header">
-          <th>Player Name</th>
-          <th>Club</th>
-        </tr>
-      </thead>
-      <tbody>
-        {players.map((item, index) => (
-          <tr key={index} onClick={() => { openModal(item); fetchStats(item.player_name, item.player_id) }}>
-            <td>{item.player_name}</td>
-            <td>{item.team_name}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-)}
-
-
+      {/* )} */}
     </div>
   );
 };
