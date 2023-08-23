@@ -162,3 +162,9 @@
   height: 2rem;
   width: 2rem;
 }
+
+tbody{
+  tr:nth-child(2){
+    background: inherit !important;
+  }
+}
