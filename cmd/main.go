@@ -76,6 +76,7 @@ func main() {
 	routes.RegisterRoutes(router)
 	routes.TeamRoutes(router)
 	routes.StandingsRoutes(router)
+	routes.FixturesRoutes(router)
 
 
 	// Apply CORS middleware
