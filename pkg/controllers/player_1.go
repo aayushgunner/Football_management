@@ -17,9 +17,12 @@ type Player struct {
 
 };
 type Team struct {
-	TeamName string `json:"team_name"`
 	TeamId int `json:"team_id"`
-	Stadium string `json:"Stadium"`
+	TeamName string `json:"team_name"`
+	Abbreviation string `json:"abbreviation"`
+	HexCode string `json:"hex_code"`
+	Logo string `json:"logo"`
+	Stadium string `json:"stadium"`
 }
 
 type Stats struct {
@@ -71,7 +74,7 @@ func retrieveTeams (w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	// Execute the SELECT query
-	query := fmt.Sprintf("SELECT team_id, team_name, Stadium from teams;")
+	query := fmt.Sprintf("SELECT team_id, team_name, abbreviation, hex_code,logo, stadium from teams;")
 	rows, err := db.Query(query)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -80,17 +83,17 @@ func retrieveTeams (w http.ResponseWriter, r *http.Request) {
 	defer rows.Close()
 
 	// Create a slice to store the retrieved records
-	players := []Team{}
+	teams := []Team{}
 
 	// Iterate over the rows and populate the slice
 	for rows.Next() {
-		var player Team
-		err := rows.Scan(&player.TeamId, &player.TeamName, &player.Stadium)
+		var team Team
+		err := rows.Scan(&team.TeamId, &team.TeamName, &team.Abbreviation, &team.HexCode, &team.Logo, &team.Stadium)
 		if err != nil {
 			log.Println(err)
 			continue
 		}
-		players = append(players, player)
+		teams = append(teams, team)
 	}
 
 	// Check for any errors encountered during row iteration
@@ -100,7 +103,7 @@ func retrieveTeams (w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Convert the data to JSON
-	jsonData, err := json.Marshal(players)
+	jsonData, err := json.Marshal(teams)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

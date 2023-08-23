@@ -2,11 +2,15 @@
 
 .card {
   border: 0;
+  &:hover{
+    background: inherit !important;
+  }
   .card-body {
     padding: $card-padding-y $card-padding-x;
     @media(max-width: 767px) {
       padding: 2rem 2rem;
     }
+
     + .card-body {
       padding-top: 1rem;
     }

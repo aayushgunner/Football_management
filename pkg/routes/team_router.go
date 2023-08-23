@@ -7,4 +7,5 @@ import (
 
 func TeamRoutes(router *mux.Router) {
 	router.HandleFunc("/teams", controllers.RetrieveTeams).Methods("GET")
+	router.HandleFunc("/team/{id}", controllers.RetrieveTeamPlayer).Methods("GET")
 }
