@@ -1,77 +1,81 @@
-DROP TYPE  IF EXISTS player_position;
-DROP TABLE  IF EXISTS players ;
-DROP TABLE  IF EXISTS coach ;
-DROP TABLE  IF EXISTS team ;
+-- DROP table If EXISTS team;
 
 
-CREATE TYPE player_position AS ENUM (
-    'GoalKeeper',
-    'Left Back',
-    'Right Back',
-    'Centre Back'
-    'Left Midfield',
-    'Right Midfield',
-    'Centre Midfield',
-    'Centre Defensive Midfield',
-    'Centre Attacking Midfield',
-    'Left Wing',
-    'Right Wing',
-    'Striker'
-);
+-- CREATE TABLE team (
+--    team_id SERIAL PRIMARY KEY,
+--    team_name VARCHAR,
+--    Abbreviation VARCHAR,
+--    hex_code VARCHAR,
+--    team_logo VARCHAR,
+--    Stadium VARCHAR  
+-- )
 
 
+-- DROP table if exists fixtures ;
 
-CREATE TABLE coach (
-  coach_id SERIAL PRIMARY KEY,
-  first_name VARCHAR(50),
-  last_name VARCHAR(50),
-  age INT
-);
+-- CREATE TABLE fixtures (
+-- fixture_id SERIAL PRIMARY KEY,
+-- fixture_date VARCHAR,
+-- team_home_id int,
+-- team_home_name VARCHAR,
+-- team_home_winner VARCHAR,
+-- team_away_id int,
+-- team_away_name VARCHAR,
+-- team_away_winner VARCHAR,
+-- home_goals int,
+-- away_goals int
 
+-- )
 
-CREATE TABLE team (
-  team_id SERIAL PRIMARY KEY,
-  team_name VARCHAR(50),
-  city VARCHAR(50),
-  coach_id INT,
-  FOREIGN KEY (coach_id) REFERENCES coach(coach_id)
-);
-
-CREATE TABLE players (
-   player_id SERIAL PRIMARY KEY,
-   first_name VARCHAR,
-   last_name VARCHAR,
-   position player_position,
-   team_id INT,
-   FOREIGN KEY (team_id) REFERENCES team(team_id)
-
-);
-
-
-
-
-
-
-INSERT into coach (first_name, last_name , age ) VALUES ('Mikel', 'Arteta',41);
-INSERT into coach (first_name, last_name , age ) VALUES ('Pep', 'Guardiola',51);
-INSERT into coach (first_name, last_name , age ) VALUES ('Jurgen', 'Klopp',54);
+-- UPDATE fixtures SET team_home_id = 1 WHERE  team_home_name='Arsenal';
+-- UPDATE fixtures SET team_home_id = 2 WHERE  team_home_name='Aston Villa';
+-- UPDATE fixtures SET team_home_id = 3 WHERE  team_home_name='Bournemouth';
+-- UPDATE fixtures SET team_home_id = 4 WHERE  team_home_name='Brentford';
+-- UPDATE fixtures SET team_home_id = 5 WHERE  team_home_name='Brighton';
+-- UPDATE fixtures SET team_home_id = 6 WHERE  team_home_name='Chelsea';
+-- UPDATE fixtures SET team_home_id = 7 WHERE  team_home_name='Crystal Palace';
+-- UPDATE fixtures SET team_home_id = 8 WHERE  team_home_name='Everton';
+-- UPDATE fixtures SET team_home_id = 9 WHERE  team_home_name='Fulham';
+-- UPDATE fixtures SET team_home_id = 10 WHERE team_home_name='Leeds';
+-- UPDATE fixtures SET team_home_id = 11 WHERE team_home_name='Leicester';
+-- UPDATE fixtures SET team_home_id = 12 WHERE team_home_name='Liverpool';
+-- UPDATE fixtures SET team_home_id = 13 WHERE team_home_name='Manchester City';
+-- UPDATE fixtures SET team_home_id = 14 WHERE team_home_name='Manchester United';
+-- UPDATE fixtures SET team_home_id = 15 WHERE team_home_name='Newcastle United';
+-- UPDATE fixtures SET team_home_id = 16 WHERE team_home_name='Nottingham Forest';
+-- UPDATE fixtures SET team_home_id = 17 WHERE team_home_name='Southampton';
+-- UPDATE fixtures SET team_home_id = 18 WHERE team_home_name='Tottenham';
+-- UPDATE fixtures SET team_home_id = 19 WHERE team_home_name='West Ham';
+-- UPDATE fixtures SET team_home_id = 20 WHERE team_home_name='Wolverhampton Wanderers';
 
 
 
-INSERT INTO team (team_name , city , coach_id) VALUES('Arsenal', 'London', 1 );
-INSERT INTO team (team_name , city , coach_id) VALUES('Manchester City', 'Manchester', 2 );
-INSERT INTO team (team_name , city , coach_id) VALUES('Liverpool', 'Liverpool', 3 );
+
+-- UPDATE fixtures SET team_away_id=1 WHERE  team_away_name='Arsenal';
+-- UPDATE fixtures SET team_away_id=2 WHERE  team_away_name='Aston Villa';
+-- UPDATE fixtures SET team_away_id=3 WHERE  team_away_name='Bournemouth';
+-- UPDATE fixtures SET team_away_id=4 WHERE  team_away_name='Brentford';
+-- UPDATE fixtures SET team_away_id=5 WHERE  team_away_name='Brighton';
+-- UPDATE fixtures SET team_away_id=6 WHERE  team_away_name='Chelsea';
+-- UPDATE fixtures SET team_away_id=7 WHERE  team_away_name='Crystal Palace';
+-- UPDATE fixtures SET team_away_id=8 WHERE  team_away_name='Everton';
+-- UPDATE fixtures SET team_away_id=9 WHERE  team_away_name='Fulham';
+-- UPDATE fixtures SET team_away_id=10 WHERE team_away_name='Leeds';
+-- UPDATE fixtures SET team_away_id=11 WHERE team_away_name='Leicester';
+-- UPDATE fixtures SET team_away_id=12 WHERE team_away_name='Liverpool';
+-- UPDATE fixtures SET team_away_id=13 WHERE team_away_name='Manchester City';
+-- UPDATE fixtures SET team_away_id=14 WHERE team_away_name='Manchester United';
+-- UPDATE fixtures SET team_away_id=15 WHERE team_away_name='Newcastle United';
+-- UPDATE fixtures SET team_away_id=16 WHERE team_away_name='Nottingham Forest';
+-- UPDATE fixtures SET team_away_id=17 WHERE team_away_name='Southampton';
+-- UPDATE fixtures SET team_away_id=18 WHERE team_away_name='Tottenham';
+-- UPDATE fixtures SET team_away_id=19 WHERE team_away_name='West Ham';
+-- UPDATE fixtures SET team_away_id=20 WHERE team_away_name='Wolverhampton Wanderers';
 
 
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Bukayo', 'Saka'   ,'Right Wing', 1 );
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Jack', 'Grealish', 'Left Wing', 2);
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Darwin', 'Nunez' , 'Striker',3 );
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Gabriel', 'Martinelli','Left Wing',1 );
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Gabriel', 'Jesus','Striker', 1 );
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Granit', 'Xhaka', 'Centre Midfield',1 );
-INSERT into players(first_name,last_name,position,team_id) VALUES ('Ben', 'White' , 'Right Back',1 );
-
-SELECT first_name , last_name FROM players;
+-- UPDATE fixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
+-- UPDATE fixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
+-- UPDATE fixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
+-- UPDATE fixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
 
 
-SELECT first_name , last_name FROM players where team_id IN (SELECT team_id FROM team WHERE coach_id IN (SELECT coach_id FROM coach WHERE first_name ='Mikel')) ORDER BY first_name ASC;

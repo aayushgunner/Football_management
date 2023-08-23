@@ -1,0 +1,57 @@
+-- DROP table if EXISTS homeFixtures;
+-- CREATE table homeFixtures (
+--     team_home_id int,
+--     team_home_name VARCHAR,
+--     Shots_on_goal int,
+--     Shots_off_goal int,
+--     total_shots int,
+--     blocked_shots int,
+--     shots_insideBox int,
+--     shots_outsideBox int,
+--     fouls int,
+--     corner_kicks int,
+--     offsides int,
+--     possession VARCHAR,
+--     yellow_cards int,
+--     red_cards int,
+--     saves int,
+--     total_passes int,
+--     accurate_passes int,
+--     pass_accuracy VARCHAR,
+--     fixture_id int
+-- --     FOREIGN KEY (team_home_id) REFERENCES teams(team_id) ,
+-- --     FOREIGN KEY (fixture_id) REFERENCES fixtures(fixture_id) 
+--  )
+
+
+-- UPDATE homeFixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
+-- -- UPDATE homeFixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
+-- -- UPDATE homeFixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
+-- UPDATE homeFixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
+
+
+-- UPDATE homeFixtures SET team_home_id = 1 WHERE  team_home_name='Arsenal';
+-- UPDATE homeFixtures SET team_home_id = 2 WHERE  team_home_name='Aston Villa';
+-- UPDATE homeFixtures SET team_home_id = 3 WHERE  team_home_name='Bournemouth';
+-- UPDATE homeFixtures SET team_home_id = 4 WHERE  team_home_name='Brentford';
+-- UPDATE homeFixtures SET team_home_id = 5 WHERE  team_home_name='Brighton';
+-- UPDATE homeFixtures SET team_home_id = 6 WHERE  team_home_name='Chelsea';
+-- UPDATE homeFixtures SET team_home_id = 7 WHERE  team_home_name='Crystal Palace';
+-- UPDATE homeFixtures SET team_home_id = 8 WHERE  team_home_name='Everton';
+-- UPDATE homeFixtures SET team_home_id = 9 WHERE  team_home_name='Fulham';
+-- UPDATE homeFixtures SET team_home_id = 10 WHERE team_home_name='Leeds';
+-- UPDATE homeFixtures SET team_home_id = 11 WHERE team_home_name='Leicester';
+-- UPDATE homeFixtures SET team_home_id = 12 WHERE team_home_name='Liverpool';
+-- UPDATE homeFixtures SET team_home_id = 13 WHERE team_home_name='Manchester City';
+-- UPDATE homeFixtures SET team_home_id = 14 WHERE team_home_name='Manchester United';
+-- UPDATE homeFixtures SET team_home_id = 15 WHERE team_home_name='Newcastle United';
+-- UPDATE homeFixtures SET team_home_id = 16 WHERE team_home_name='Nottingham Forest';
+-- UPDATE homeFixtures SET team_home_id = 17 WHERE team_home_name='Southampton';
+-- UPDATE homeFixtures SET team_home_id = 18 WHERE team_home_name='Tottenham';
+-- UPDATE homeFixtures SET team_home_id = 19 WHERE team_home_name='West Ham';
+-- UPDATE homeFixtures SET team_home_id = 20 WHERE team_home_name='Wolverhampton Wanderers';
+
+-- ALTER TABLE homeFixtures
+-- ADD CONSTRAINT fk_home_team
+-- FOREIGN KEY (team_home_id)
+-- REFERENCES teams(team_id);
