@@ -42,6 +42,16 @@ const Sidebar = () => {
           <i className="mdi mdi-briefcase menu-icon"></i>
         </Link>
       </li>
+      <li
+        className={
+          isPathActive("/fixtures") ? "nav-item active" : "nav-item"
+        }
+      >
+        <Link className="nav-link" to="/fixtures">
+          <span className="menu-title">Fixtures</span>
+          <i className="mdi mdi-briefcase menu-icon"></i>
+        </Link>
+      </li>
     </ul>
   </nav>
   );
