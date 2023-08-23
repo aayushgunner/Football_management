@@ -9,4 +9,5 @@ type Table struct {
 	GoalsFor        int    `json:"goals_for"`
 	GoalsAgainst    int    `json:"goals_against"`
 	Points   		int    `json:"points"`
+	TeamLogo        string `json:"team_logo"`
  }

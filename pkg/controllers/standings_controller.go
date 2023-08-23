@@ -19,7 +19,10 @@ func RetrieveTable(w http.ResponseWriter, r *http.Request) {
 		}
 		
 		// Query the database
-		rows, err := DB.Query(`SELECT team_rank, team_name, matches_played, wins, draws, losses , goals_for, goals_against, points FROM standings ORDER BY team_rank;`)
+		rows, err := DB.Query(`SELECT s.team_rank, t.team_name, s.matches_played, s.wins, s.draws, s.losses, s.goals_for, s.goals_against, s.points, t.team_logo
+		FROM standings s
+		JOIN teams t ON s.team_id = t.team_id
+		ORDER BY s.team_rank;`)
 		if err != nil {
 			fmt.Println("error")
 			log.Fatal(err)
@@ -34,7 +37,7 @@ func RetrieveTable(w http.ResponseWriter, r *http.Request) {
 		// Loop through the rows and populate the player array
 		for rows.Next() {
 			player := models.Table{}
-			err := rows.Scan(&player.TeamRank, &player.TeamName, &player.Played, &player.Wins, &player.Draws, &player.Losses, &player.GoalsFor, &player.GoalsAgainst, &player.Points)
+			err := rows.Scan(&player.TeamRank, &player.TeamName, &player.Played, &player.Wins, &player.Draws, &player.Losses, &player.GoalsFor, &player.GoalsAgainst, &player.Points, &player.TeamLogo)
 			if err != nil {
 				log.Println(err)
 				http.Error(w, http.StatusText(500), http.StatusInternalServerError)

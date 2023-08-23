@@ -124,6 +124,14 @@ const Dashboard = () => {
                                 headerAlign: "center",
                                 align: "center",
                               },
+                              {
+                                dataField: "team_logo",
+                                text: "",
+                                formatter: (cell, row, rowIndex) =>
+                                <img className='image_for_team_logo' src={row.team_logo}></img>,
+                                headerAlign: "center",
+                                align: "center",
+                              },
                               ...props.baseProps.columns,
                             ]}
                             data={data}
