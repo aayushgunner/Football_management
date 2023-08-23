@@ -26,8 +26,8 @@
 
 
 -- UPDATE awayFixtures SET team_home_name = 'Newcastle United' WHERE team_home_name = 'Newcastle';
-UPDATE awayFixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
-UPDATE awayFixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
+-- UPDATE awayFixtures SET team_away_name = 'Newcastle United' WHERE team_away_name = 'Newcastle';
+-- UPDATE awayFixtures SET team_away_name = 'Wolverhampton Wanderers' WHERE team_away_name = 'Wolves';
 -- UPDATE awayFixtures SET team_home_name = 'Wolverhampton Wanderers' WHERE team_home_name = 'Wolves';
 
 UPDATE awayFixtures SET team_away_id=1 WHERE  team_away_name='Arsenal';

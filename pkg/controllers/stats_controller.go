@@ -2,13 +2,13 @@ package controllers
 
 import (
 	"encoding/json"
-	"net/http"
 	"football_server/pkg/models"
+	"net/http"
+
 	// "database/sql"
-	"log"
 	"fmt"
+	"log"
 	"strings"
-	
 )
 func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 	id := strings.TrimPrefix(r.URL.Path, "/stats/")
@@ -21,7 +21,7 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// Query the database
-		query := fmt.Sprintf("SELECT games, mins_played, goal, assists, shots, key_passes, yellow_cards, red_cards, position FROM stats WHERE player_id = '%s' LIMIT 1;", id)
+		query := fmt.Sprintf("SELECT p.player_name, s.games, s.mins_played, s.goal, s.assists, s.shots, s.key_passes, s.yellow_cards, s.red_cards, s.position FROM stats s INNER JOIN player p on s.player_id=p.player_id WHERE s.player_id = '%s'  LIMIT 1;", id)
 		rows, err := DB.Query(query)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -35,7 +35,7 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 		// Iterate over the rows and populate the slice
 		for rows.Next() {
 			var stat models.Stats
-			err := rows.Scan(&stat.Games, &stat.MinsPlayed, &stat.Goal, &stat.Assists, &stat.Shots, &stat.KeyPasses, &stat.YellowCards, &stat.RedCards, &stat.Position)
+			err := rows.Scan(&stat.Name, &stat.Games, &stat.MinsPlayed, &stat.Goal, &stat.Assists, &stat.Shots, &stat.KeyPasses, &stat.YellowCards, &stat.RedCards, &stat.Position)
 			if err != nil {
 				log.Println(err)
 				continue
