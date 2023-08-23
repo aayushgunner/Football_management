@@ -19,10 +19,19 @@ const PlayerStats = () => {
     useEffect(()=>{
         fetchStats()
     },[])
+    let imageSrc = null;
+
+    try {
+      // Try to require the image
+      imageSrc = require(`../assets/newimages/${id}.png`);
+    } catch (error) {
+      // Image not found, imageSrc remains null
+    }
   return (
     <div className="Model_Content">
           <div className="Model_Content_ImageBox">
-            <img className="Model_Content_ImageBox_Image" src={footballImage} alt="Football" className="modal-image" />
+          <img/>
+            <img className="Model_Content_ImageBox_Image"  src={imageSrc} alt={selectedPlayer?.player_name}  />
           </div>
           <div className="Model_Content_CardContainer">
             <div className="Model_Content_CardContainer_Cards">

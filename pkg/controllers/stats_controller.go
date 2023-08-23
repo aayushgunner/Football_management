@@ -35,7 +35,7 @@ func RetrieveStatsById(w http.ResponseWriter, r *http.Request) {
 		// Iterate over the rows and populate the slice
 		for rows.Next() {
 			var stat models.Stats
-			err := rows.Scan(&stat.Name, &stat.Games, &stat.MinsPlayed, &stat.Goal, &stat.Assists, &stat.Shots, &stat.KeyPasses, &stat.YellowCards, &stat.RedCards, &stat.Position)
+			err := rows.Scan(&stat.PlayerName, &stat.Games, &stat.MinsPlayed, &stat.Goal, &stat.Assists, &stat.Shots, &stat.KeyPasses, &stat.YellowCards, &stat.RedCards, &stat.Position)
 			if err != nil {
 				log.Println(err)
 				continue

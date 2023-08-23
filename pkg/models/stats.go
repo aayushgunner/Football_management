@@ -1,6 +1,6 @@
 package models
 type Stats struct {
-	Name         string `json:"player_name"`
+	PlayerName   string `json:"player_name"`
 	Games        int    `json:"games"`
 	MinsPlayed   int    `json:"mins_played"`
 	Goal         int    `json:"goal"`
