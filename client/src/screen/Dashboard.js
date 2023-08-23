@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Spinner from '../shared/Spinner';
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+import axios from 'axios';
 const { SearchBar } = Search;
 const Dashboard = () => {
-  // const [table, setTable] = useState([]);
+  const [table, setTable] = useState([]);
   const [showLoader, setShowLoader] = useState(false)
+  const fetchTable = () => {
+    axios
+      .get(`http://localhost:8080/standings`)
+      .then((response) => {
+        console.log("Players is this ")
+        console.log(response.data);
+        setTable(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  useEffect(()=>{
+    fetchTable()
+  },[])
+
   const   columns = [
     {
       dataField: "team_name",
@@ -14,32 +31,32 @@ const Dashboard = () => {
       sort: false,
     },
     {
-      dataField: "played",
+      dataField: "matches_played",
       text: "Played",
       sort: false,
     },
     {
-      dataField: "won",
+      dataField: "wins",
       text: "Won",
       sort: false,
     },
     {
-      dataField: "drawn",
+      dataField: "draws",
       text: "Drawn",
       sort: false,
     },
     {
-      dataField: "lost",
+      dataField: "losses",
       text: "Lost",
       sort: false,
     },
     {
-      dataField: "gf",
+      dataField: "goals_for",
       text: "GF",
       sort: false,
     },
     {
-      dataField: "ga",
+      dataField: "goals_against",
       text: "GA",
       sort: false,
     },
@@ -54,32 +71,7 @@ const Dashboard = () => {
       sort: false,
     },
   ];
-  const table = [
-    {
-      position: 1,
-      team_name: 'Arsenal',
-      played:100,
-      won: 100,
-      drawn: 0,
-      lost:0,
-      gf: 1200,
-      ga:0,
-      gd: 1200,
-      points: 300
-    },
-    {
-      position: 2,
-      team_name: 'Manchestar city',
-      played:100,
-      won: 90,
-      drawn:0,
-      lost:10,
-      gf: 100,
-      ga:10,
-      gd: 90,
-      points: 270
-    }
-  ]
+
   return (
     <div className="row">
     <div className="col-12">
@@ -97,7 +89,16 @@ const Dashboard = () => {
                   search
                 >
                   {(props) => {
-                    const data = props.baseProps.data.reverse()// Invertir el orden de los datos
+                    // const data = props.baseProps.data// Invertir el orden de los datos
+                    let data = props.baseProps.data.map(obj => {
+                      console.log("Original Object:", obj);
+                      let newObj = {
+                        ...obj,
+                        'gd': (obj.goals_for - obj.goals_against)
+                      };
+                      console.log("Updated Object:", newObj);
+                      return newObj;
+                    });
 
                     return (
                       <div>

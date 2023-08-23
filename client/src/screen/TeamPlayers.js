@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Saka from "../assets/images/saka.png";
 const TeamPlayerCard = ({ teamPlayer, index }) => {
+  const {id} = useParams();
     const lightenColor = (color, percent) => {
         const num = parseInt(color.slice(1), 16);
         const amt = Math.round(2.55 * percent);
@@ -16,6 +17,15 @@ const TeamPlayerCard = ({ teamPlayer, index }) => {
         filter: 'brightness(200%)', 
         opacity: 0.1// Increase brightness to lighten the color
       };
+      let imageSrc = null;
+
+  try {
+    // Try to require the image
+    imageSrc = require(`../assets/newimages/${teamPlayer.player_id}.png`);
+  } catch (error) {
+    // Image not found, imageSrc remains null
+  }
+
   return (
     <div className="TeamPlayerCard">
       <div className="TeamPlayerCard_Top">
@@ -46,7 +56,10 @@ const TeamPlayerCard = ({ teamPlayer, index }) => {
           className="TeamPlayerCard_Top_Right"
           style={{ background: teamPlayer.hex_code }}
         >
-          <img src={Saka} alt="Saka" />
+          {/* <img src={require(`../assets/newimages/${teamPlayer.player_id}.png`)} alt="Saka" /> */}
+          {imageSrc && (
+        <img src={imageSrc} alt={teamPlayer.player_name} />
+      )}
         </div>
       </div>
       <div className="TeamPlayerCard_Bottom">
