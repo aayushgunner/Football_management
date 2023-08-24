@@ -9,6 +9,7 @@ const Team = lazy(()=> import('./screen/Team'))
 const PlayerStats = lazy(()=> import('./screen/PlayerStats'))
 const TeamPlayers = lazy(()=> import('./screen/TeamPlayers'))
 const Fixtures = lazy(()=>import('./screen/Fixtures'))
+const MatchStats= lazy(()=> import('./screen/MatchStats'))
 
 const AppRoutes = () => {
   return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
         <Route path='/team/:id' component={TeamPlayers} />
         <Route path='/playerStats/:id' component={PlayerStats}/>
         <Route path='/fixtures' component={Fixtures}/>
+        <Route path='/matchStats/:id' component={MatchStats}/>
         <Redirect to="/dashboard" />
       </Switch>
 

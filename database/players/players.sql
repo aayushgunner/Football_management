@@ -1,12 +1,12 @@
--- DROP table if EXISTS player;
--- CREATE table player (
--- player_id SERIAL PRIMARY KEY,
--- player_link_id INT,
--- player_name VARCHAR,
--- team_name VARCHAR,
--- team_id int
--- -- FOREIGN KEY (team_id) REFERENCES teams (team_id)  
--- )
+DROP table if EXISTS player;
+CREATE table player (
+player_id SERIAL PRIMARY KEY,
+player_link_id INT,
+player_name VARCHAR,
+team_name VARCHAR,
+team_id int
+FOREIGN KEY (team_id) REFERENCES teams (team_id)  
+)
 
 
 UPDATE player
