@@ -53,6 +53,23 @@ const Players = () => {
             >
               <i className="mdi mdi-pencil btn-icon-prepend"></i>
             </button>
+            <button
+              className="btn btn-danger py-1 px-2 btn-icon-text btn-rounded delete_btn"
+              onClick={() => {
+                axios
+                  .get(`http://localhost:8080/player/${row.player_id}`)
+                  .then((response) => {
+                    console.log('delete button ')
+                    console.log(response.data)
+                    setPlayers(response.data);
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }}
+            >
+              <img src={require("../assets/images/trash.svg")} />
+            </button>
           </div>
         );
       },
